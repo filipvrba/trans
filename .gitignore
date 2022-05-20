@@ -1,6 +1,2 @@
-dist
-build
-transfv.egg-info
-
 transfv/__pycache__
 transfv/settings.cfg

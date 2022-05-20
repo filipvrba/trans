@@ -5,6 +5,7 @@ from . import constants
 from .prints import Prints
 from .translator import Translator
 from .configuration import Configuration
+import time
 
 prints = Prints()
 translator = Translator()
@@ -13,18 +14,7 @@ configuration = Configuration()
 
 def exit_app( value = 0 ):
     sys.exit( value )
-
-
-def helper():
-
-    print( f'Usage: { constants.APP } [OPTIONS]\n' )
-    print(f"{'Option' : <30}Explanation")
-    print(f"{'--------' : <30}-------")
-    for argument in constants.ARGUMENTS:
-        arguments = f'{ argument.get_short() }, { argument.get_long() }'
-        print(f"{ arguments : <30}{argument.message}")
-
-    exit_app()
+    pass
 
 
 def set_vars_from_args(argv):
@@ -43,7 +33,8 @@ def set_vars_from_args(argv):
 
     for opt, arg in opts:
         if opt in help.get_full():
-            helper()
+            prints.helper()
+            exit_app()
         elif opt in message.get_full():
             message.set_value( arg )
         elif opt in first.get_full():
