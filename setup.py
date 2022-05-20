@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 setup(
 
     name='transfv',
-    version='1.0.3',
+    version='1.0.4',
 
     description='Google translator for a terminal.',
     long_description=README,
@@ -38,7 +38,7 @@ setup(
 
     entry_points={
         "console_scripts": [
-            "trans=trans.__init__:main",
+            "trans=transfv.__init__:main",
         ]
     },
 )
