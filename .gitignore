@@ -1,0 +1,5 @@
+dist
+trans.egg-info
+
+trans/__pycache__
+trans/settings.cfg

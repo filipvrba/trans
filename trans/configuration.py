@@ -1,4 +1,5 @@
-import constants
+import pathlib
+from . import constants
 import configparser
 
 class Configuration:
@@ -10,12 +11,17 @@ class Configuration:
         self.open_config()
 
 
+    def get_path_file( self ):
+        dir = pathlib.Path(__file__).parent
+        return (dir / constants.SETTINGS_FILE )
+
+
     def open_config( self ):
-        self.file_read = self.config.read( constants.SETTINGS_FILE )
+        self.file_read = self.config.read( self.get_path_file() )
 
 
     def write_config( self ):
-        with open(constants.SETTINGS_FILE, 'w+') as configfile:
+        with open( self.get_path_file(), 'w+' ) as configfile:
             self.config.write(configfile)
 
 

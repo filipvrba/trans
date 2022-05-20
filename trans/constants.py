@@ -1,4 +1,4 @@
-from argument import Argument
+from .argument import Argument
 
 APP = "trans"
 

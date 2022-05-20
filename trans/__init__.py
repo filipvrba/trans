@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
 import sys, getopt
-import constants
-from prints import Prints
-from translator import Translator
-from configuration import Configuration
+from . import constants
+from .prints import Prints
+from .translator import Translator
+from .configuration import Configuration
 
 prints = Prints()
 translator = Translator()
@@ -63,7 +63,7 @@ def checkFunction( text ):
     return False
 
 
-if __name__ == '__main__':
+def main():
     argument = sys.argv[1:]
     set_vars_from_args(argument)
     configuration.check_languages()

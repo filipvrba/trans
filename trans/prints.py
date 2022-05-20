@@ -1,5 +1,5 @@
 import sys, os
-import constants
+from . import constants
 
 class Prints:
 

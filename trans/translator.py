@@ -1,5 +1,5 @@
-import constants
-import __main__
+from . import constants
+import trans
 import googletrans
 
 class Translator:
@@ -15,7 +15,7 @@ class Translator:
 
             text = input( constants.INPUT )
 
-            if __main__.checkFunction( text ):
+            if trans.checkFunction( text ):
                 continue
 
             self.translate( text )
@@ -26,7 +26,7 @@ class Translator:
         if ( not text ):
             return
 
-        __main__.prints.print_loading()
+        trans.prints.print_loading()
 
         translate = ""
         try:
@@ -35,7 +35,7 @@ class Translator:
         except:
             translate = constants.ERROR_MESSAGE
 
-        __main__.prints.print_trans( translate )
+        trans.prints.print_trans( translate )
 
 
     def detectDect( self, text ):
