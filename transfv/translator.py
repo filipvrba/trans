@@ -1,5 +1,5 @@
 from . import constants
-import trans
+import transfv
 import googletrans
 
 class Translator:
@@ -15,7 +15,7 @@ class Translator:
 
             text = input( constants.INPUT )
 
-            if trans.checkFunction( text ):
+            if transfv.checkFunction( text ):
                 continue
 
             self.translate( text )
@@ -26,7 +26,7 @@ class Translator:
         if ( not text ):
             return
 
-        trans.prints.print_loading()
+        transfv.prints.print_loading()
 
         translate = ""
         try:
@@ -35,7 +35,7 @@ class Translator:
         except:
             translate = constants.ERROR_MESSAGE
 
-        trans.prints.print_trans( translate )
+        transfv.prints.print_trans( translate )
 
 
     def detectDect( self, text ):

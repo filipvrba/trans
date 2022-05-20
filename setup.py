@@ -9,8 +9,8 @@ README = (HERE / "README.md").read_text()
 
 setup(
 
-    name='trans',
-    version='1.0.0',
+    name='transfv',
+    version='1.0.3',
 
     description='Google translator for a terminal.',
     long_description=README,

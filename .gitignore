@@ -1,5 +1,5 @@
 dist
-trans.egg-info
+transfv.egg-info
 
-trans/__pycache__
-trans/settings.cfg
+transfv/__pycache__
+transfv/settings.cfg
