@@ -4,6 +4,7 @@ APP = "trans"
 
 EXIT = "exit()"
 CLEAR = "clear()"
+INFO = "info()"
 
 FIRST_LANG = "cs"
 SECOND_LANG = "en"

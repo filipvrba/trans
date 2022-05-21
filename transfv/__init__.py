@@ -50,6 +50,9 @@ def checkFunction( text ):
     elif ( text == constants.CLEAR ):
         prints.clear()
         return True
+    elif ( text == constants.INFO ):
+        prints.print_informations()
+        return True
     
     return False
 
