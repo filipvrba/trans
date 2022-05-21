@@ -61,8 +61,10 @@ def checkFunction( text ):
         prints.print_informations()
         return True
     elif ( text == constants.OPEN ):
-
         thirdside.open_google( translator.history )
+        return True
+    elif ( text == constants.HELP ):
+        prints.print_helps()
         return True
     
     return False

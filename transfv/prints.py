@@ -1,12 +1,19 @@
 import sys, os
 from . import constants
-import time
 
 class Prints:
 
     def print_informations( self ):
         print( "Google translator (googletrans==4.0.0-rc1)" )
-        print( 'Type "exit()" for exited this app, and "clear()" for clearing all a texts.' )
+    
+
+    def print_helps( self ):
+
+        print( "| Functions for manipulating this an app." )
+        print( "|" )
+        print(f"| {'exit()' : <10} For exited this app.")
+        print(f"| {'clear()' : <10} For clearing all a texts.")
+        print(f"| {'open()' : <10} For opening a web google translator, with return an history word.")
 
 
     def print_loading( self ):

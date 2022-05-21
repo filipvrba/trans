@@ -6,6 +6,7 @@ EXIT = "exit()"
 CLEAR = "clear()"
 INFO = "info()"
 OPEN = "open()"
+HELP = "help()"
 
 FIRST_LANG = "cs"
 SECOND_LANG = "en"
