@@ -5,11 +5,12 @@ from . import constants
 from .prints import Prints
 from .translator import Translator
 from .configuration import Configuration
-import time
+from .thirdside import ThirdSide
 
 prints = Prints()
 translator = Translator()
 configuration = Configuration()
+thirdside = ThirdSide()
 
 
 def exit_app( value = 0 ):
@@ -43,15 +44,25 @@ def set_vars_from_args(argv):
             second.set_value( arg )
 
 
+def clear():
+
+    prints.clear()
+    translator.clear()
+
+
 def checkFunction( text ):
 
     if ( text == constants.EXIT ):
         exit_app()
     elif ( text == constants.CLEAR ):
-        prints.clear()
+        clear()
         return True
     elif ( text == constants.INFO ):
         prints.print_informations()
+        return True
+    elif ( text == constants.OPEN ):
+
+        thirdside.open_google( translator.history )
         return True
     
     return False

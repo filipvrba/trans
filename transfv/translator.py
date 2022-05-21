@@ -2,11 +2,49 @@ from . import constants
 import transfv
 import googletrans
 
+class History:
+
+    def __init__( self ):
+
+        self.text = ""
+        self.first_lang = ""
+        self.second_lang = ""
+    
+
+    def set_langs( self ):
+
+        if not self.text:
+            self.first_lang = constants.ARGUMENTS[2].value
+            self.second_lang = constants.ARGUMENTS[3].value
+
+
+    def set_text( self, text ):
+
+        self.text = text
+
+
+    def set_first_lang( self, lang ):
+
+        self.first_lang = lang
+
+
+    def set_second_lang( self, lang ):
+
+        self.second_lang = lang
+
+
+
 class Translator:
     
     def __init__( self ):
         self.dest = constants.FIRST_LANG
         self.translator = googletrans.Translator()
+        self.history = History()
+
+
+    def clear( self ):
+
+        self.history.__init__()
 
 
     def translation_loop( self ):
@@ -17,6 +55,8 @@ class Translator:
 
             if transfv.checkFunction( text ):
                 continue
+
+            self.history.set_text( text )
 
             self.translate( text )
 
@@ -41,6 +81,7 @@ class Translator:
     def detectDect( self, text ):
 
         dest = self.translator.detect( text ).lang
+        self.history.set_first_lang( dest )
 
         first = constants.ARGUMENTS[2]
         second = constants.ARGUMENTS[3]
@@ -49,5 +90,7 @@ class Translator:
             dest = second.value
         elif ( dest == second.value ):
             dest = first.value
+
+        self.history.set_second_lang( dest )
         
         return dest
