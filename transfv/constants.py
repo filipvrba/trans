@@ -8,6 +8,7 @@ INFO = "info()"
 OPEN = "open()"
 HELP = "help()"
 VALUE = "value()"
+IMAGES = "images()"
 
 CS_NAME = "cs"
 FIRST_LANG = CS_NAME
@@ -29,6 +30,7 @@ ARGUMENTS = [
     Argument( 'm', 'message', 'The message is for translation.' ),
     Argument( 'f', 'first', 'Set a first language (example: "cs" or "en" ).' ),
     Argument( 's', 'second', 'Set a second language (example: "en" or "cs" ).' ),
-    Argument( 'o', 'open', 'Open web browser, with a translator tab.' ),
-    Argument( 'v', 'value', 'Open web browser, with a value word tab.' ),
+    Argument( 'o', 'open', 'Open a web browser, with a translator tab.' ),
+    Argument( 'v', 'value', 'Open a web browser, with a value word tab.' ),
+    Argument( 'i', 'image', 'Open a web browser, with a images tab.' ),
 ]

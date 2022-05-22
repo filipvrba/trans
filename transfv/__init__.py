@@ -25,11 +25,12 @@ def set_vars_from_args(argv):
     second = constants.ARGUMENTS[3]
     open = constants.ARGUMENTS[4]
     value = constants.ARGUMENTS[5]
+    images = constants.ARGUMENTS[6]
 
     try:
         opts, args = getopt.getopt(argv,
-        f"{ help.short }{open.short}{value.short}{ message.short }:{ first.short }:{ second.short }:",
-        [ help.long, {open.long}, {value.long}, f"{ message.long }=", f"{ first.long }=", f"{ second.long }=" ])
+        f"{ help.short }{open.short}{value.short}{images.short}{ message.short }:{ first.short }:{ second.short }:",
+        [ help.long, {open.long}, {value.long}, {images.long}, f"{ message.long }=", f"{ first.long }=", f"{ second.long }=" ])
 
     except getopt.GetoptError:
         exit_app( 2 )
@@ -42,6 +43,8 @@ def set_vars_from_args(argv):
             open.set_value( True )
         elif opt in value.get_full():
             value.set_value( True )
+        elif opt in images.get_full():
+            images.set_value( True )
         elif opt in message.get_full():
             message.set_value( arg )
         elif opt in first.get_full():
@@ -67,11 +70,14 @@ def checkFunction( text ):
         prints.print_informations()
         return True
     elif ( text == constants.OPEN ):
-        thirdside.open_google_trans( translator.history )
+        thirdside.open_google_trans()
         return True
     elif ( text == constants.VALUE ):
-        if thirdside.open_google( translator.history ):
+        if thirdside.open_google():
             prints.print_nots_value()
+        return True
+    elif ( text == constants.IMAGES ):
+        thirdside.open_google_images()
         return True
     elif ( text == constants.HELP ):
         prints.print_helps()
@@ -97,11 +103,13 @@ def scenario( argument ):
         message = constants.ARGUMENTS[1]
         open = constants.ARGUMENTS[4]
         value = constants.ARGUMENTS[5]
+        images = constants.ARGUMENTS[6]
 
-        if open.value or value.value:
-            print( "set history" )
-            translator.history.set_text( message.value )
-            translator.detectDect( message.value )
+        if open.value or value.value or images.value:
+            if message.value:
+                print( "set history" )
+                translator.history.set_text( message.value )
+                translator.detectDect( message.value )
 
         if open.value:
             print("open translator")
@@ -118,3 +126,7 @@ def scenario( argument ):
             translator.translate( message.value )
             print("open value")
             checkFunction( constants.VALUE )
+        
+        if images.value:
+            print("open images")
+            checkFunction( constants.IMAGES )
