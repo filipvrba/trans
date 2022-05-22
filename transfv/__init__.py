@@ -23,11 +23,13 @@ def set_vars_from_args(argv):
     message = constants.ARGUMENTS[1]
     first = constants.ARGUMENTS[2]
     second = constants.ARGUMENTS[3]
+    open = constants.ARGUMENTS[4]
+    value = constants.ARGUMENTS[5]
 
     try:
         opts, args = getopt.getopt(argv,
-        f"{ help.short }{ message.short }:{ first.short }:{ second.short }:",
-        [ help.long, f"{ message.long }=", f"{ first.long }=", f"{ second.long }=" ])
+        f"{ help.short }{open.short}{value.short}{ message.short }:{ first.short }:{ second.short }:",
+        [ help.long, {open.long}, {value.long}, f"{ message.long }=", f"{ first.long }=", f"{ second.long }=" ])
 
     except getopt.GetoptError:
         exit_app( 2 )
@@ -36,6 +38,10 @@ def set_vars_from_args(argv):
         if opt in help.get_full():
             prints.helper()
             exit_app()
+        elif opt in open.get_full():
+            open.set_value( True )
+        elif opt in value.get_full():
+            value.set_value( True )
         elif opt in message.get_full():
             message.set_value( arg )
         elif opt in first.get_full():
@@ -61,7 +67,11 @@ def checkFunction( text ):
         prints.print_informations()
         return True
     elif ( text == constants.OPEN ):
-        thirdside.open_google( translator.history )
+        thirdside.open_google_trans( translator.history )
+        return True
+    elif ( text == constants.VALUE ):
+        if thirdside.open_google( translator.history ):
+            prints.print_nots_value()
         return True
     elif ( text == constants.HELP ):
         prints.print_helps()
@@ -75,9 +85,36 @@ def main():
     set_vars_from_args(argument)
     configuration.check_languages()
 
+    scenario( argument )
+
+
+def scenario( argument ):
+
     if ( not argument ):
         prints.print_informations()
         translator.translation_loop()
     else:
         message = constants.ARGUMENTS[1]
-        translator.translate( message.value )
+        open = constants.ARGUMENTS[4]
+        value = constants.ARGUMENTS[5]
+
+        if open.value or value.value:
+            print( "set history" )
+            translator.history.set_text( message.value )
+            translator.detectDect( message.value )
+
+        if open.value:
+            print("open translator")
+            checkFunction( constants.OPEN )
+        else:
+            print("translate")
+            translator.translate( message.value )
+        
+        if value.value and not open.value:
+            print("open value")
+            checkFunction( constants.VALUE )
+        elif value.value and open.value:
+            print(f"{ constants.LAST_LINE }translate")
+            translator.translate( message.value )
+            print("open value")
+            checkFunction( constants.VALUE )

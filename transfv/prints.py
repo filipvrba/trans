@@ -5,7 +5,7 @@ class Prints:
 
     def print_informations( self ):
         print( "Google translator (googletrans==4.0.0-rc1)" )
-    
+
 
     def print_helps( self ):
 
@@ -14,6 +14,17 @@ class Prints:
         print(f"| {'exit()' : <10} For exited this app.")
         print(f"| {'clear()' : <10} For clearing all a texts.")
         print(f"| {'open()' : <10} For opening a web google translator, with return an history word.")
+        print(f"| {'value()' : <10} For opening a web google, with return an translated history word.")
+
+
+    def print_nots_value( self ):
+
+        print( f"{ constants.ERROR_ICON } This a word not's value." )
+    
+
+    def print_error( self ):
+
+        self.print_trans( f"{ constants.ERROR_ICON } This a word, not's exist in the google, in a list words." )
 
 
     def print_loading( self ):

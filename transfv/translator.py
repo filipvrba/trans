@@ -7,6 +7,7 @@ class History:
     def __init__( self ):
 
         self.text = ""
+        self.text_trans = ""
         self.first_lang = ""
         self.second_lang = ""
     
@@ -21,6 +22,11 @@ class History:
     def set_text( self, text ):
 
         self.text = text
+    
+
+    def set_text_trans( self, text ):
+
+        self.text_trans = text
 
 
     def set_first_lang( self, lang ):
@@ -73,9 +79,12 @@ class Translator:
             dest = self.detectDect( text )
             translate = self.translator.translate( text, dest=dest ).text
         except:
-            translate = constants.ERROR_MESSAGE
+            self.clear()
+            transfv.prints.print_error()
+            return
 
         transfv.prints.print_trans( translate )
+        self.history.set_text_trans( translate )
 
 
     def detectDect( self, text ):
