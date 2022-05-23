@@ -49,10 +49,15 @@ class Prints:
 
     
     def helper( self ):
-
         print( f'Usage: { constants.APP } [OPTIONS]\n' )
         print(f"{'Option' : <30}Explanation")
         print(f"{'--------' : <30}-------")
         for argument in constants.ARGUMENTS:
             arguments = f'{ argument.get_short() }, { argument.get_long() }'
             print(f"{ arguments : <30}{argument.message}")
+    
+
+    def debug( self, value ):
+
+        if constants.IS_DEBUG:
+            print( value )

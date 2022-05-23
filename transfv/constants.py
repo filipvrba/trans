@@ -1,5 +1,7 @@
 from .argument import Argument
 
+IS_DEBUG = True
+
 APP = "trans"
 
 EXIT = "exit()"

@@ -1,5 +1,4 @@
 from . import constants
-import transfv
 import googletrans
 
 class History:
@@ -42,10 +41,11 @@ class History:
 
 class Translator:
     
-    def __init__( self ):
+    def __init__( self, transfv ):
         self.dest = constants.FIRST_LANG
         self.translator = googletrans.Translator()
         self.history = History()
+        self.transfv = transfv
 
 
     def clear( self ):
@@ -59,7 +59,7 @@ class Translator:
 
             text = input( constants.INPUT )
 
-            if transfv.checkFunction( text ):
+            if self.transfv.checkFunction( text ):
                 continue
 
             self.history.set_text( text )
@@ -72,7 +72,7 @@ class Translator:
         if ( not text ):
             return
 
-        transfv.prints.print_loading()
+        self.transfv.prints.print_loading()
 
         translate = ""
         try:
@@ -80,10 +80,10 @@ class Translator:
             translate = self.translator.translate( text, dest=dest ).text
         except:
             self.clear()
-            transfv.prints.print_error()
+            self.transfv.prints.print_error()
             return
 
-        transfv.prints.print_trans( translate )
+        self.transfv.prints.print_trans( translate )
         self.history.set_text_trans( translate )
 
 

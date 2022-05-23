@@ -1,22 +1,24 @@
 from . import constants
 import webbrowser
-import transfv
 
 class ThirdSide:
 
+    def __init__( self, transfv ):
+        self.transfv = transfv
+
     def open_google( self ):
 
-        if ( transfv.translator.history.second_lang != constants.CS_NAME ):
+        if ( self.transfv.translator.history.second_lang != constants.CS_NAME ):
             return True  # Just end this a method, and continue function for print a message.
 
-        uri = self.get_uri_google( f"{ transfv.translator.history.text_trans }+v%C3%BDznam" )
+        uri = self.get_uri_google( f"{ self.transfv.translator.history.text_trans }+v%C3%BDznam" )
         webbrowser.open( uri )
         return False
     
     def open_google_images( self ):
 
         arg = "&tbm=isch"
-        uri = self.get_uri_google( transfv.translator.history.text, arg )
+        uri = self.get_uri_google( self.transfv.translator.history.text, arg )
         webbrowser.open( uri )
 
 
@@ -28,13 +30,13 @@ class ThirdSide:
 
     def get_uri_google_trans( self ):
 
-        transfv.translator.history.set_langs()
+        self.transfv.translator.history.set_langs()
 
-        text = transfv.translator.history.text
+        text = self.transfv.translator.history.text
         if not text:
             text = ""
 
-        return f"{ constants.URI_GOOGLE_TRANS }?sl={ transfv.translator.history.first_lang }&tl={ transfv.translator.history.second_lang }&text={ text }&op=translate"
+        return f"{ constants.URI_GOOGLE_TRANS }?sl={ self.transfv.translator.history.first_lang }&tl={ self.transfv.translator.history.second_lang }&text={ text }&op=translate"
     
 
     def get_uri_google( self, text = "", args = "" ):
