@@ -65,6 +65,28 @@ class App:
         self.translator.clear()
 
 
+    def info( self ):
+        self.prints.print_informations()
+    
+
+    def open( self ):
+        self.thirdside.open_google_trans()
+    
+
+    def value( self ):
+
+        if self.thirdside.open_google():
+                self.prints.print_nots_value()
+    
+
+    def images( self ):
+        self.thirdside.open_google_images()
+
+    
+    def help( self ):
+        self.prints.print_helps()
+
+
     def checkFunction( self, text ):
 
         if ( text == constants.EXIT ):
@@ -73,20 +95,24 @@ class App:
             self.clear()
             return True
         elif ( text == constants.INFO ):
-            self.prints.print_informations()
+            self.info()
             return True
         elif ( text == constants.OPEN ):
-            self.thirdside.open_google_trans()
+            self.open()
+            return True
+        elif ( text == constants.OPEN_ALL ):
+            self.value()
+            self.open()
+            self.images()
             return True
         elif ( text == constants.VALUE ):
-            if self.thirdside.open_google():
-                self.prints.print_nots_value()
+            self.value()
             return True
         elif ( text == constants.IMAGES ):
-            self.thirdside.open_google_images()
+            self.images()
             return True
         elif ( text == constants.HELP ):
-            self.prints.print_helps()
+            self.help()
             return True
         
         return False
