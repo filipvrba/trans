@@ -37,7 +37,7 @@ setup(
 
     entry_points={
         "console_scripts": [
-            "trans=transfv.__init__:App().main",
+            "trans=transfv.__init__:App:main",
         ]
     },
 )
