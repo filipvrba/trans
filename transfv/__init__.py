@@ -10,10 +10,13 @@ from .thirdside import ThirdSide
 class App:
 
     def __init__( self ):
+
         self.prints = Prints()
         self.translator = Translator( self )
         self.configuration = Configuration()
         self.thirdside = ThirdSide( self )
+
+        self.prints.debug("init app")
 
 
     def exit_app( self, value = 0 ):

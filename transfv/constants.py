@@ -1,6 +1,6 @@
 from .argument import Argument
 
-IS_DEBUG = True
+IS_DEBUG = False
 
 APP = "trans"
 
