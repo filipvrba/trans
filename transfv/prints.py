@@ -4,7 +4,7 @@ from . import constants
 class Prints:
 
     def print_informations( self ):
-        print( "Google translator (googletrans==4.0.0-rc1)" )
+        print( "Google translator" )
 
 
     def print_helps( self ):
@@ -15,6 +15,7 @@ class Prints:
         print(f"| {'clear()' : <10} For clearing all a texts.")
         print(f"| {'info()' : <10} For get information to this app.")
         print(f"| {'open()' : <10} For opening a web google translator, with return an history word.")
+        print(f"| {'open(@)' : <10} For opening a web google, translator and images, with return an history word.")
         print(f"| {'value()' : <10} For opening a web google, with return an translated history word.")
         print(f"| {'images()' : <10} For opening a web google images, with return an history word.")
         
@@ -34,8 +35,11 @@ class Prints:
         sys.stdout.flush()
 
 
-    def print_trans( self, text ):
-        print( constants.LAST_LINE + text )
+    def print_trans( self, text, translate ):
+        print( constants.LAST_LINE + "   " )
+        print( f"╭⁌ { text }" )
+        print( f"╰─⁍ { translate }" )
+        print()
     
 
     def clear_console( self ):

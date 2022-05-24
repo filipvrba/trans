@@ -43,8 +43,7 @@ class App:
 
         for opt, arg in opts:
             if opt in help.get_full():
-                prints.helper()
-                self.exit_app()
+                self.helper()
             elif opt in open.get_full():
                 open.set_value( True )
             elif opt in value.get_full():
@@ -57,6 +56,11 @@ class App:
                 first.set_value( arg )
             elif opt in second.get_full():
                 second.set_value( arg )
+
+
+    def helper( self ):
+        self.prints.helper()
+        self.exit_app()
 
 
     def clear( self ):
@@ -93,6 +97,7 @@ class App:
             self.exit_app()
         elif ( text == constants.CLEAR ):
             self.clear()
+            self.info()
             return True
         elif ( text == constants.INFO ):
             self.info()
@@ -114,6 +119,9 @@ class App:
         elif ( text == constants.HELP ):
             self.help()
             return True
+        else:
+            self.clear()
+            self.info()
         
         return False
 

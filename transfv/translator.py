@@ -83,7 +83,7 @@ class Translator:
             self.transfv.prints.print_error()
             return
 
-        self.transfv.prints.print_trans( translate )
+        self.transfv.prints.print_trans( text, translate )
         self.history.set_text_trans( translate )
 
 
