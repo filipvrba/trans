@@ -13,10 +13,11 @@ class Prints:
         print( "|" )
         print(f"| {'exit()' : <10} For exited this app.")
         print(f"| {'clear()' : <10} For clearing all a texts.")
+        print(f"| {'info()' : <10} For get information to this app.")
         print(f"| {'open()' : <10} For opening a web google translator, with return an history word.")
         print(f"| {'value()' : <10} For opening a web google, with return an translated history word.")
         print(f"| {'images()' : <10} For opening a web google images, with return an history word.")
-
+        
 
     def print_nots_value( self ):
 
