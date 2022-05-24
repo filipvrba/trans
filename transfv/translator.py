@@ -78,9 +78,12 @@ class Translator:
         try:
             dest = self.detectDect( text )
             translate = self.translator.translate( text, dest=dest ).text
-        except:
+        except Exception as e:
+
             self.clear()
-            self.transfv.prints.print_error()
+
+            message = getattr( e, 'message', str(e) )
+            self.transfv.prints.print_error( message )
             return
 
         self.transfv.prints.print_trans( text, translate )

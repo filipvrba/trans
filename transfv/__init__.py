@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
-import sys, getopt
+import sys
 from . import constants
 from .prints import Prints
 from .translator import Translator
 from .configuration import Configuration
 from .thirdside import ThirdSide
+from .arguments import Arguments
 
 class App:
 
@@ -15,47 +16,13 @@ class App:
         self.translator = Translator( self )
         self.configuration = Configuration()
         self.thirdside = ThirdSide( self )
+        self.arguments = Arguments( self )
 
         self.prints.debug("init app")
 
 
     def exit_app( self, value = 0 ):
         sys.exit( value )
-        pass
-
-
-    def set_vars_from_args( self, argv ):
-        help = constants.ARGUMENTS[0]
-        message = constants.ARGUMENTS[1]
-        first = constants.ARGUMENTS[2]
-        second = constants.ARGUMENTS[3]
-        open = constants.ARGUMENTS[4]
-        value = constants.ARGUMENTS[5]
-        images = constants.ARGUMENTS[6]
-
-        try:
-            opts, args = getopt.getopt(argv,
-            f"{ help.short }{open.short}{value.short}{images.short}{ message.short }:{ first.short }:{ second.short }:",
-            [ help.long, {open.long}, {value.long}, {images.long}, f"{ message.long }=", f"{ first.long }=", f"{ second.long }=" ])
-
-        except getopt.GetoptError:
-            self.exit_app( 2 )
-
-        for opt, arg in opts:
-            if opt in help.get_full():
-                self.helper()
-            elif opt in open.get_full():
-                open.set_value( True )
-            elif opt in value.get_full():
-                value.set_value( True )
-            elif opt in images.get_full():
-                images.set_value( True )
-            elif opt in message.get_full():
-                message.set_value( arg )
-            elif opt in first.get_full():
-                first.set_value( arg )
-            elif opt in second.get_full():
-                second.set_value( arg )
 
 
     def helper( self ):
@@ -127,11 +94,10 @@ class App:
 
 
     def main( self ):
-        argument = sys.argv[1:]
-        self.set_vars_from_args(argument)
+        self.arguments.set_vars_from_args()
         self.configuration.check_languages()
 
-        self.scenario( argument )
+        self.scenario( self.arguments.argument )
 
 
     def scenario( self, argument ):

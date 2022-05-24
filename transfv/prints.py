@@ -4,7 +4,10 @@ from . import constants
 class Prints:
 
     def print_informations( self ):
-        print( "Google translator" )
+
+        first = constants.ARGUMENTS[2].value
+        second = constants.ARGUMENTS[3].value
+        print( f"# Google translator |{ first }/{ second }|" )
 
 
     def print_helps( self ):
@@ -25,9 +28,9 @@ class Prints:
         print( f"{ constants.ERROR_ICON } This a word not's value." )
     
 
-    def print_error( self ):
+    def print_error( self, message ):
 
-        self.print_trans( f"{ constants.ERROR_ICON } This a word, not's exist in the google, in a list words." )
+        print( f"{constants.LAST_LINE}{ constants.ERROR_ICON } { message }" )
 
 
     def print_loading( self ):
