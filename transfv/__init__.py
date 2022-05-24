@@ -94,8 +94,8 @@ class App:
 
 
     def main( self ):
-        self.arguments.set_vars_from_args()
         self.configuration.check_languages()
+        self.arguments.set_vars_from_args()
 
         self.scenario( self.arguments.argument )
 
@@ -105,34 +105,3 @@ class App:
         if ( not argument ):
             self.prints.print_informations()
             self.translator.translation_loop()
-        else:
-            message = constants.ARGUMENTS[1]
-            open = constants.ARGUMENTS[4]
-            value = constants.ARGUMENTS[5]
-            images = constants.ARGUMENTS[6]
-
-            if open.value or value.value or images.value:
-                if message.value:
-                    self.prints.debug( "set history" )
-                    self.translator.history.set_text( message.value )
-                    self.translator.detectDect( message.value )
-
-            if open.value:
-                self.prints.debug("open translator")
-                self.checkFunction( constants.OPEN )
-            else:
-                self.prints.debug("translate")
-                self.translator.translate( message.value )
-            
-            if value.value and not open.value:
-                self.prints.debug("open value")
-                self.checkFunction( constants.VALUE )
-            elif value.value and open.value:
-                self.prints.debug(f"{ constants.LAST_LINE }translate")
-                self.translator.translate( message.value )
-                self.prints.debug("open value")
-                self.checkFunction( constants.VALUE )
-            
-            if images.value:
-                self.prints.debug("open images")
-                self.checkFunction( constants.IMAGES )
