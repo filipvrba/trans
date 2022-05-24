@@ -18,6 +18,7 @@ class Arguments:
             constants.ARGUMENTS[4].set_callback( self.events.open ),
             constants.ARGUMENTS[5].set_callback( self.events.value ),
             constants.ARGUMENTS[6].set_callback( self.events.images ),
+            constants.ARGUMENTS[7].set_callback( self.events.info ),
         ]
 
 
@@ -46,9 +47,14 @@ class Arguments:
     def set_vars_from_args( self ):
 
         try:
+            short_arguments = self.get_short_arguments()
+            long_argument = self.get_long_arguments()
             opts, args = getopt.getopt( self.argument,
-            self.get_short_arguments(),
-            self.get_long_arguments() )
+            short_arguments,
+            long_argument )
+
+            self.transfv.prints.debug( f"short args: { short_arguments }" )
+            self.transfv.prints.debug( f"long args: { long_argument }" )
     
         except getopt.GetoptError:
             self.transfv.exit_app( 2 )

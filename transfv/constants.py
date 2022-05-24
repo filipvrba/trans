@@ -40,4 +40,5 @@ ARGUMENTS = [
     Argument( 'o', 'open', 'Open a web browser, with a translator tab.' ),
     Argument( 'v', 'value', 'Open a web browser, with a value word tab.' ),
     Argument( 'i', 'images', 'Open a web browser, with a images tab.' ),
+    Argument( '', 'info', 'Print informations for this an app.' ),
 ]

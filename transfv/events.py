@@ -58,3 +58,7 @@ class Events:
 
         self.transfv.prints.debug("open images")
         self.transfv.checkFunction( constants.IMAGES )
+    
+
+    def info( self, object, arg ):
+        self.transfv.prints.print_informations()

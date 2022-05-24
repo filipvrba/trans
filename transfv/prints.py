@@ -61,7 +61,11 @@ class Prints:
         print(f"{'Option' : <30}Explanation")
         print(f"{'--------' : <30}-------")
         for argument in constants.ARGUMENTS:
-            arguments = f'{ argument.get_short() }, { argument.get_long() }'
+
+            if argument.get_short() == '-':
+                arguments = argument.get_long()
+            else:
+                arguments = f'{ argument.get_short() }, { argument.get_long() }'
             print(f"{ arguments : <30}{argument.message}")
     
 
