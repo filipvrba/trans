@@ -48,6 +48,10 @@ class Prints:
         print()
     
 
+    def print_function( self, text ):
+        print( text )
+    
+
     def clear_console( self ):
         command = 'clear'
         if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls

@@ -90,6 +90,7 @@ class Translator:
         self.translate( text )
 
         if isHaveFunc:
+            self.transfv.prints.print_function( text_func )
             self.transfv.checkFunction( text_func )
 
 
