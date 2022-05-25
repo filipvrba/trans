@@ -58,35 +58,44 @@ class App:
         self.prints.print_helps()
 
 
-    def checkFunction( self, text ):
+    def checkFunction( self, text, isActive = True ):
 
         if ( text == constants.EXIT ):
-            self.exit_app()
+            if isActive:
+                self.exit_app()
         elif ( text == constants.CLEAR ):
-            self.clear()
-            self.info()
+            if isActive:
+                self.clear()
+                self.info()
             return True
         elif ( text == constants.INFO ):
-            self.info()
+            if isActive:
+                self.info()
             return True
         elif ( text == constants.OPEN ):
-            self.open()
+            if isActive:
+                self.open()
             return True
         elif ( text == constants.OPEN_ALL ):
-            self.value()
-            self.open()
-            self.images()
+            if isActive:
+                self.value()
+                self.open()
+                self.images()
             return True
         elif ( text == constants.VALUE ):
-            self.value()
+            if isActive:
+                self.value()
             return True
         elif ( text == constants.IMAGES ):
-            self.images()
+            if isActive:
+                self.images()
             return True
         elif ( text == constants.HELP ):
-            self.help()
+            if isActive:
+                self.help()
             return True
         else:
+            # if isActive:
             self.clear()
             self.info()
         

@@ -53,19 +53,51 @@ class Translator:
         self.history.__init__()
 
 
+    def check_more_words( self ):
+        rawText = input( constants.INPUT ).split()
+        i_last = len( rawText ) - 1
+
+        if i_last == 0:
+            self.one_word( rawText )
+        elif i_last == -1:
+            self.transfv.checkFunction( constants.CLEAR )
+        else:
+            self.more_words( rawText, i_last )
+
+
+    def one_word( self, raw_text ):
+        text = ' '.join( raw_text )
+        if self.transfv.checkFunction( text ):
+            return
+
+        self.history.set_text( text )
+        self.translate( text )
+    
+
+    def more_words( self, raw_text, i_last ):
+        text_func = raw_text[ i_last ]
+
+        isHaveFunc = False
+        if self.transfv.checkFunction( text_func, False ):
+
+            # Have func
+            self.transfv.checkFunction( constants.CLEAR )
+            del raw_text[ i_last ]
+            isHaveFunc = True
+
+        text = ' '.join( raw_text )
+        self.history.set_text( text )
+        self.translate( text )
+
+        if isHaveFunc:
+            self.transfv.checkFunction( text_func )
+
+
     def translation_loop( self ):
 
         while( True ):
-
-            text = input( constants.INPUT )
-
-            if self.transfv.checkFunction( text ):
-                continue
-
-            self.history.set_text( text )
-
-            self.translate( text )
-
+            self.check_more_words()
+    
 
     def translate( self, text ):
 
