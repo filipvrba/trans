@@ -8,14 +8,15 @@ LONG = '='
 
 APP = "trans"
 
-EXIT = "exit#"
-CLEAR = "clear#"
-INFO = "info#"
-OPEN = "open#"
+EXIT = "exit()"
+CLEAR = "clear()"
+INFO = "info()"
+OPEN = "#open"
 OPEN_ALL = "open@"
-HELP = "help#"
-VALUE = "value#"
-IMAGES = "images#"
+OPEN_TWO = "open#"
+HELP = "help()"
+VALUE = "#value"
+IMAGES = "#images"
 
 CS_NAME = "cs"
 FIRST_LANG = CS_NAME

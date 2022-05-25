@@ -82,6 +82,11 @@ class App:
                 self.open()
                 self.images()
             return True
+        elif ( text == constants.OPEN_TWO ):
+            if isActive:
+                self.open()
+                self.images()
+            return True
         elif ( text == constants.VALUE ):
             if isActive:
                 self.value()

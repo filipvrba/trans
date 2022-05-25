@@ -12,15 +12,18 @@ class Prints:
 
     def print_helps( self ):
 
-        print( "| Functions for manipulating this an app." )
-        print( "|" )
-        print(f"| {'exit()' : <10} For exited this app.")
-        print(f"| {'clear()' : <10} For clearing all a texts.")
-        print(f"| {'info()' : <10} For get information to this app.")
-        print(f"| {'open()' : <10} For opening a web google translator, with return an history word.")
-        print(f"| {'open(@)' : <10} For opening a web google, translator and images, with return an history word.")
-        print(f"| {'value()' : <10} For opening a web google, with return an translated history word.")
-        print(f"| {'images()' : <10} For opening a web google images, with return an history word.")
+        print( "┌# Functions for manipulating this an app." )
+        print( "│" )
+        print(f"│ {constants.EXIT : <10} For exited this app.")
+        print(f"│ {constants.CLEAR : <10} For clearing all a texts.")
+        print(f"│ {constants.INFO : <10} For get information to this app.")
+        print( "│" )
+        print(f"╰─╮ {constants.OPEN : <10} For opening an web tab for a google translator.")
+        print(f"  │ {constants.OPEN_TWO : <10} For opening an web tabs for a translator and a images.")
+        print(f"╭─╯ {constants.OPEN_ALL : <10} For opening an web tabs for a google, a translator and a images.")
+        print( "│" )
+        print(f"│ {constants.VALUE : <10} For opening an web tab for a goole")
+        print(f"│ {constants.IMAGES : <10} For opening an web tab for a images.")
         
 
     def print_nots_value( self ):
