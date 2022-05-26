@@ -1,43 +1,7 @@
 from . import constants
+from .history import History
+
 import googletrans
-
-class History:
-
-    def __init__( self ):
-
-        self.text = ""
-        self.text_trans = ""
-        self.first_lang = ""
-        self.second_lang = ""
-    
-
-    def set_langs( self ):
-
-        if not self.text:
-            self.first_lang = constants.ARGUMENTS[2].value
-            self.second_lang = constants.ARGUMENTS[3].value
-
-
-    def set_text( self, text ):
-
-        self.text = text
-    
-
-    def set_text_trans( self, text ):
-
-        self.text_trans = text
-
-
-    def set_first_lang( self, lang ):
-
-        self.first_lang = lang
-
-
-    def set_second_lang( self, lang ):
-
-        self.second_lang = lang
-
-
 
 class Translator:
     
@@ -109,8 +73,14 @@ class Translator:
 
         translate = ""
         try:
-            dest = self.detectDect( text )
-            translate = self.translator.translate( text, dest=dest ).text
+            exist_trans = self.transfv.configuration.languages.get_trans( text )
+            if exist_trans:
+                translate = exist_trans
+            else:
+                dest = self.detectDect( text )
+                translate = self.translator.translate( text, dest=dest ).text
+                self.transfv.configuration.languages.add_data( text, translate )
+
         except Exception as e:
 
             self.clear()

@@ -1,4 +1,6 @@
 import pathlib
+
+from .languages import Languages
 from . import constants
 import configparser
 
@@ -10,10 +12,13 @@ class Configuration:
         self.file_read = None
         self.open_config()
 
+        self.languages = Languages()
+        self.languages.open_file( self.get_path_file( constants.LANGUAGES_FILE ))
 
-    def get_path_file( self ):
+
+    def get_path_file( self, name = constants.SETTINGS_FILE ):
         dir = pathlib.Path(__file__).parent
-        return (dir / constants.SETTINGS_FILE )
+        return (dir / name )
 
 
     def open_config( self ):

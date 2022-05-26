@@ -19,6 +19,7 @@ class Events:
 
         self.transfv.prints.debug("translate")
         self.transfv.translator.translate( arg )
+        self.transfv.save_translations()
 
 
     def first( self, object, arg ):

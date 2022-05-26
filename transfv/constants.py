@@ -5,6 +5,7 @@ GET = 'get'
 SET = 'set'
 SHORT = ':'
 LONG = '='
+ENCODING = 'utf-8'
 
 APP = "trans"
 
@@ -16,7 +17,7 @@ OPEN_ALL = "open@"
 OPEN_TWO = "open#"
 HELP = "help()"
 VALUE = "#value"
-IMAGES = "#images"
+IMAGES = "#image"
 
 CS_NAME = "cs"
 FIRST_LANG = CS_NAME
@@ -25,6 +26,7 @@ FIRST_LANG_NAME = "first"
 SECOND_LANG_NAME = "second"
 LANGUAGE_NAME = "languages"
 SETTINGS_FILE = "settings.cfg"
+LANGUAGES_FILE = "langs.json"
 URI_GOOGLE_TRANS = "https://translate.google.com/"
 
 INPUT = ">>> "
@@ -40,6 +42,6 @@ ARGUMENTS = [
     Argument( 's', 'second', 'Set a second language (example: "en" or "cs" ).', SET ),
     Argument( 'o', 'open', 'Open a web browser, with a translator tab.' ),
     Argument( 'v', 'value', 'Open a web browser, with a value word tab.' ),
-    Argument( 'i', 'images', 'Open a web browser, with a images tab.' ),
+    Argument( 'i', 'image', 'Open a web browser, with a images tab.' ),
     Argument( '', 'info', 'Print informations for this an app.' ),
 ]
