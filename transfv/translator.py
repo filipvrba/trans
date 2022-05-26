@@ -64,6 +64,31 @@ class Translator:
             self.check_more_words()
     
 
+    def get_translate_online( self, text ):
+        dest = self.detectDect( text )
+        translate = self.translator.translate( text, dest=dest ).text
+        return translate
+
+
+    def get_translates( self, text ):
+
+        translate = ""
+        exist_trans = self.transfv.configuration.languages.get_trans( text )
+
+        if exist_trans:
+            translate = exist_trans
+        else:
+            translate = self.get_translate_online( text )
+            self.transfv.configuration.languages.add_data( text, translate )
+        
+        return translate
+
+
+    def error( self, e ):
+        self.clear()
+        message = getattr( e, 'message', str(e) )
+        self.transfv.prints.print_error( message )
+
     def translate( self, text ):
 
         if ( not text ):
@@ -73,20 +98,9 @@ class Translator:
 
         translate = ""
         try:
-            exist_trans = self.transfv.configuration.languages.get_trans( text )
-            if exist_trans:
-                translate = exist_trans
-            else:
-                dest = self.detectDect( text )
-                translate = self.translator.translate( text, dest=dest ).text
-                self.transfv.configuration.languages.add_data( text, translate )
-
+            translate = self.get_translates( text )
         except Exception as e:
-
-            self.clear()
-
-            message = getattr( e, 'message', str(e) )
-            self.transfv.prints.print_error( message )
+            self.error( e )
             return
 
         self.transfv.prints.print_trans( text, translate )
