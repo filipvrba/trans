@@ -19,6 +19,7 @@ class Arguments:
             constants.ARGUMENTS[5].set_callback( self.events.value ),
             constants.ARGUMENTS[6].set_callback( self.events.images ),
             constants.ARGUMENTS[7].set_callback( self.events.info ),
+            constants.ARGUMENTS[8].set_callback( self.events.words_db ),
         ]
 
 

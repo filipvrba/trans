@@ -21,8 +21,11 @@ class App:
         self.prints.debug("init app")
 
 
+    def absolute_path_files( self, name ):
+        return self.configuration.get_path_file( name )
+
     def save_translations(self):
-        absolute_path = self.configuration.get_path_file( constants.LANGUAGES_FILE )
+        absolute_path = self.absolute_path_files( constants.LANGUAGES_FILE )
         self.configuration.languages.write_file( absolute_path )
 
 

@@ -20,7 +20,7 @@ class Languages:
 
     def write_file( self, name ):
         with open( name, 'w+', encoding=constants.ENCODING ) as fcc_file:
-            json.dump( self.fcc_data, fcc_file, indent=4 )
+            json.dump( self.fcc_data, fcc_file, indent=constants.INDENT )
 
 
     def set_data(self, data):
@@ -52,3 +52,7 @@ class Languages:
             return first
         
         return None
+
+
+    def __str__(self) -> str:
+        return json.dumps( self.fcc_data, indent=constants.INDENT )

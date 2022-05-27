@@ -1,4 +1,5 @@
 from . import constants
+import os
 
 class Events:
 
@@ -63,3 +64,11 @@ class Events:
 
     def info( self, object, arg ):
         self.transfv.prints.print_informations()
+
+
+    def words_db( self, object, arg ):
+
+        if arg == constants.GET:
+            print( self.transfv.configuration.languages )
+        else:
+            os.system( f"{arg} {self.transfv.absolute_path_files( constants.LANGUAGES_FILE )}" )

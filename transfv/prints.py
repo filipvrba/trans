@@ -73,7 +73,15 @@ class Prints:
                 arguments = argument.get_long()
             else:
                 arguments = f'{ argument.get_short() }, { argument.get_long() }'
-            print(f"{ arguments : <30}{argument.message}")
+
+            if type( argument.message ) == str:
+                print(f"{ arguments : <30}{argument.message}")
+            else:
+                for i in range(len(argument.message)):
+                    if i == 0:
+                        print(f"{ arguments : <30}{argument.message[i]}")
+                    else:
+                        print(f"{ '' : <30}{argument.message[i]}")
     
 
     def debug( self, value ):

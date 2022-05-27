@@ -6,6 +6,7 @@ SET = 'set'
 SHORT = ':'
 LONG = '='
 ENCODING = 'utf-8'
+INDENT = 4
 
 APP = "trans"
 
@@ -44,4 +45,6 @@ ARGUMENTS = [
     Argument( 'v', 'value', 'Open a web browser, with a value word tab.' ),
     Argument( 'i', 'image', 'Open a web browser, with a images tab.' ),
     Argument( '', 'info', 'Print informations for this an app.' ),
+    Argument( '', 'words-db', ['Print json on all entered words.',
+        'Helpful arguments: [get or any command]'], SET ),
 ]
