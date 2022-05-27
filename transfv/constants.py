@@ -44,7 +44,7 @@ ARGUMENTS = [
     Argument( 'o', 'open', 'Open a web browser, with a translator tab.' ),
     Argument( 'v', 'value', 'Open a web browser, with a value word tab.' ),
     Argument( 'i', 'image', 'Open a web browser, with a images tab.' ),
-    Argument( '', 'info', 'Print informations for this an app.' ),
-    Argument( '', 'words-db', ['Print json on all entered words.',
+    Argument( None, 'info', 'Print informations for this an app.' ),
+    Argument( None, 'words-db', ['Print json on all entered words.',
         'Helpful arguments: [get or any command]'], SET ),
 ]

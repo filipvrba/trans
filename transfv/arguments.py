@@ -28,6 +28,7 @@ class Arguments:
         opts = ""
         for argument in self.arguments:
 
+            # print(argument.get_short_opt())
             opts += argument.get_short_opt()
         
         return opts

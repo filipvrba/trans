@@ -38,10 +38,10 @@ class Argument:
     def get_opt( self, type, arg ):
 
         opt = ""
-        if self.access == constants.GET:
+        if self.access == constants.GET and arg:
             opt = arg
 
-        elif self.access == constants.SET:
+        elif self.access == constants.SET and arg:
             opt = f"{ arg }{ type }"
 
         return opt
