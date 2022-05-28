@@ -69,7 +69,7 @@ class Prints:
         print(f"{'--------' : <30}-------")
         for argument in constants.ARGUMENTS:
 
-            if argument.get_short() == '-':
+            if argument.get_short() == '-None':
                 arguments = argument.get_long()
             else:
                 arguments = f'{ argument.get_short() }, { argument.get_long() }'
