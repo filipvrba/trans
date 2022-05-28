@@ -1,6 +1,8 @@
+from this import d
 from . import constants
+from .obj import Obj
 
-class History:
+class History(Obj):
 
     def __init__( self ):
 
@@ -8,6 +10,8 @@ class History:
         self.text_trans = ""
         self.first_lang = ""
         self.second_lang = ""
+        
+        self.debug("init history")
     
 
     def set_langs( self ):
@@ -15,23 +19,28 @@ class History:
         if not self.text:
             self.first_lang = constants.ARGUMENTS[2].value
             self.second_lang = constants.ARGUMENTS[3].value
+            self.debug("set a langs for history")
 
 
     def set_text( self, text ):
 
         self.text = text
+        self.debug( f"set a text for history: { text }" )
     
 
     def set_text_trans( self, text ):
 
         self.text_trans = text
+        self.debug( f"set a text_trans for history: { text }" )
 
 
     def set_first_lang( self, lang ):
 
         self.first_lang = lang
+        self.debug( f"set a f_lang for history: { lang }" )
 
 
     def set_second_lang( self, lang ):
 
         self.second_lang = lang
+        self.debug( f"set a s_lang for history: { lang }" )

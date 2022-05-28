@@ -1,14 +1,16 @@
 import sys, getopt
+
+from .obj import Obj
 from . import constants
 from .events import Events
 
 
-class Arguments:
+class Arguments( Obj ):
 
-    def __init__( self, transfv ) -> None:
-        self.transfv = transfv
+    def __init__( self ) -> None:
+        self.transfv = self.get_root()
         self.argument = sys.argv[1:]
-        self.events = Events( transfv )
+        self.events = Events()
 
         self.arguments = [
             constants.ARGUMENTS[0].set_callback( self.events.help ),
@@ -55,8 +57,8 @@ class Arguments:
             short_arguments,
             long_argument )
 
-            self.transfv.prints.debug( f"short args: { short_arguments }" )
-            self.transfv.prints.debug( f"long args: { long_argument }" )
+            self.debug( f"short args: { short_arguments }" )
+            self.debug( f"long args: { long_argument }" )
     
         except getopt.GetoptError:
             self.transfv.exit_app( 2 )

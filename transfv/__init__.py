@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import sys
+
+from .obj import Obj
 from . import constants
 from .prints import Prints
 from .translator import Translator
@@ -8,17 +10,18 @@ from .configuration import Configuration
 from .thirdside import ThirdSide
 from .arguments import Arguments
 
-class App:
+class App( Obj ):
 
     def __init__( self ):
 
+        constants.ROOT = self
         self.prints = Prints()
-        self.translator = Translator( self )
+        self.translator = Translator()
         self.configuration = Configuration()
-        self.thirdside = ThirdSide( self )
-        self.arguments = Arguments( self )
+        self.thirdside = ThirdSide()
+        self.arguments = Arguments()
 
-        self.prints.debug("init app")
+        self.debug("init app")
 
 
     def absolute_path_files( self, name ):
@@ -65,6 +68,16 @@ class App:
     
     def help( self ):
         self.prints.print_helps()
+    
+
+    def lang_detect( self ):
+
+        first = self.translator.history.first_lang
+        second = self.translator.history.second_lang
+
+        if first == '' or second == '':
+            text = self.translator.history.text
+            self.translator.detectDect( text )
 
 
     def checkFunction( self, text, isActive = True ):
@@ -83,21 +96,25 @@ class App:
             return True
         elif ( text == constants.OPEN ):
             if isActive:
+                self.lang_detect()
                 self.open()
             return True
         elif ( text == constants.OPEN_ALL ):
             if isActive:
+                self.lang_detect()
                 self.value()
                 self.open()
                 self.images()
             return True
         elif ( text == constants.OPEN_TWO ):
             if isActive:
+                self.lang_detect()
                 self.open()
                 self.images()
             return True
         elif ( text == constants.VALUE ):
             if isActive:
+                self.lang_detect()
                 self.value()
             return True
         elif ( text == constants.IMAGES ):

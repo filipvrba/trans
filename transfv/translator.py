@@ -1,15 +1,16 @@
+from .obj import Obj
 from . import constants
 from .history import History
 
 import googletrans
 
-class Translator:
+class Translator( Obj ):
     
-    def __init__( self, transfv ):
+    def __init__( self ):
         self.dest = constants.FIRST_LANG
         self.translator = googletrans.Translator()
         self.history = History()
-        self.transfv = transfv
+        self.transfv = self.get_root()
 
 
     def clear( self ):

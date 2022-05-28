@@ -87,4 +87,4 @@ class Prints:
     def debug( self, value ):
 
         if constants.IS_DEBUG:
-            print( value )
+            print( f"⚪ { value }")

@@ -7,6 +7,7 @@ SHORT = ':'
 LONG = '='
 ENCODING = 'utf-8'
 INDENT = 4
+ROOT = None
 
 APP = "trans"
 

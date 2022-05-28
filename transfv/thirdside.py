@@ -1,10 +1,11 @@
+from .obj import Obj
 from . import constants
 import webbrowser
 
-class ThirdSide:
+class ThirdSide( Obj ):
 
-    def __init__( self, transfv ):
-        self.transfv = transfv
+    def __init__( self ):
+        self.transfv = self.get_root()
 
     def open_google( self ):
 
