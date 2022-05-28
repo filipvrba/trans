@@ -2,7 +2,7 @@
 
 import sys
 
-from .obj import Obj
+from .obj import debug
 from . import constants
 from .prints import Prints
 from .translator import Translator
@@ -10,7 +10,7 @@ from .configuration import Configuration
 from .thirdside import ThirdSide
 from .arguments import Arguments
 
-class App( Obj ):
+class App:
 
     def __init__( self ):
 
@@ -21,7 +21,7 @@ class App( Obj ):
         self.thirdside = ThirdSide()
         self.arguments = Arguments()
 
-        self.debug("init app")
+        debug("init app")
 
 
     def absolute_path_files( self, name ):

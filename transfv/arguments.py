@@ -1,14 +1,14 @@
 import sys, getopt
 
-from .obj import Obj
+from .obj import debug, get_root
 from . import constants
 from .events import Events
 
 
-class Arguments( Obj ):
+class Arguments:
 
     def __init__( self ) -> None:
-        self.transfv = self.get_root()
+        self.transfv = get_root()
         self.argument = sys.argv[1:]
         self.events = Events()
 
@@ -57,8 +57,8 @@ class Arguments( Obj ):
             short_arguments,
             long_argument )
 
-            self.debug( f"short args: { short_arguments }" )
-            self.debug( f"long args: { long_argument }" )
+            debug( f"short args: { short_arguments }" )
+            debug( f"long args: { long_argument }" )
     
         except getopt.GetoptError:
             self.transfv.exit_app( 2 )

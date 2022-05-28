@@ -1,11 +1,11 @@
-from .obj import Obj
+from .obj import debug, get_root
 from . import constants
 import os
 
-class Events( Obj ):
+class Events:
 
     def __init__( self ) -> None:
-        self.transfv = self.get_root()
+        self.transfv = get_root()
 
 
     def help( self, object, arg ):
@@ -15,11 +15,11 @@ class Events( Obj ):
     def message( self, object, arg ):
         object.set_value( arg )
 
-        self.debug( "set history" )
+        debug( "set history" )
         self.transfv.translator.history.set_text( arg )
         self.transfv.translator.detectDect( arg )
 
-        self.debug("translate")
+        debug("translate")
         self.transfv.translator.translate( arg )
         self.transfv.save_translations()
 
@@ -45,21 +45,21 @@ class Events( Obj ):
     def open( self, object, arg ):
         object.set_value( True )
 
-        self.debug("open translator")
+        debug("open translator")
         self.transfv.checkFunction( constants.OPEN )
 
 
     def value( self, object, arg ):
         object.set_value( True )
 
-        self.debug("open value")
+        debug("open value")
         self.transfv.checkFunction( constants.VALUE )
 
 
     def images( self, object, arg ):
         object.set_value( True )
 
-        self.debug("open images")
+        debug("open images")
         self.transfv.checkFunction( constants.IMAGES )
     
 
