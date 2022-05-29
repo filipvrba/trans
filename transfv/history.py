@@ -1,4 +1,3 @@
-from this import d
 from . import constants
 from .obj import debug
 
