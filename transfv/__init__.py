@@ -77,6 +77,10 @@ class App:
 
         if first == '' or second == '':
             text = self.translator.history.text
+
+            if not text:
+                return
+
             self.translator.detectDect( text )
 
 
