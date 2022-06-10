@@ -9,6 +9,7 @@ from .translator import Translator
 from .configuration import Configuration
 from .thirdside import ThirdSide
 from .arguments import Arguments
+from .signals import Signals
 
 class App:
 
@@ -20,6 +21,7 @@ class App:
         self.configuration = Configuration()
         self.thirdside = ThirdSide()
         self.arguments = Arguments()
+        self.signals = Signals()
 
         debug("init app")
 
