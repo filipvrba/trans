@@ -26,20 +26,19 @@ class Events:
 
     def first( self, object, arg ):
 
-        if arg == constants.GET:
-            print(self.transfv.configuration.get_first_lang_config())
-        else:
+        if arg != constants.GET:
             object.set_value( arg )
             self.transfv.configuration.check_languages()
 
+        print(self.transfv.configuration.get_first_lang_config())
 
     def second( self, object, arg ):
 
-        if arg == constants.GET:
-            print(self.transfv.configuration.get_second_lang_config())
-        else:
+        if arg != constants.GET:
             object.set_value( arg )
             self.transfv.configuration.check_languages()
+        
+        print(self.transfv.configuration.get_second_lang_config())
 
 
     def open( self, object, arg ):
