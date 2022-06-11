@@ -3,6 +3,7 @@ from .argument import Argument
 IS_DEBUG = False
 GET = 'get'
 SET = 'set'
+CHECK = 'check'
 SHORT = ':'
 LONG = '='
 ENCODING = 'utf-8'

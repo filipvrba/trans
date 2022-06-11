@@ -68,8 +68,13 @@ class Events:
 
 
     def words_db( self, object, arg ):
+        languages = self.transfv.configuration.languages
 
         if arg == constants.GET:
-            print( self.transfv.configuration.languages )
+            print( languages )
+        elif arg == constants.CHECK:
+            languages.check_data()
+            print( languages )
+            self.transfv.exit_app()
         else:
             os.system( f"{arg} {self.transfv.absolute_path_files( constants.LANGUAGES_FILE )}" )

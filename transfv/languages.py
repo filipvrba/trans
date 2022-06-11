@@ -29,7 +29,23 @@ class Languages:
 
     def add_data( self, key, value ):
         self.fcc_data[ key.lower() ] = value.lower()
+
     
+    def check_data( self ):
+        def is_one_word( value ):
+            value = value.split(' ')
+            if len( value ) <= 2:
+                return True
+            else:
+                return False
+
+        fcc_data_copy = self.fcc_data.copy()
+        for key in fcc_data_copy:
+            value = fcc_data_copy[ key ]
+            
+            if not is_one_word( key ) or not is_one_word( key ):
+                del self.fcc_data[ key ]
+
 
     def get_trans( self, input ):
         for key in self.fcc_data:

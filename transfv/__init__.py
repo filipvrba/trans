@@ -35,6 +35,7 @@ class App:
 
 
     def exit_app( self, value = 0 ):
+        self.configuration.languages.check_data()
         self.save_translations()
         sys.exit( value )
 
